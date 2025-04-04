@@ -21,15 +21,16 @@
     }
     /* ---------- Chat Container ---------- */
     .chat-container {
-      width: 80%;
-      max-width: 600px;
+      width: 100%;  /* Adjusted width to full width */
+      max-width: 800px;
       margin: 20px auto;
       border-radius: 10px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      background-color: white;  /* Chat area remains white */
-      border: 4px solid #D1A3FF; /* Increased outline thickness */
+      background-color: white;
+      border: 4px solid #D1A3FF;
+      box-sizing: border-box;  /* Prevent overflow */
     }
     /* ---------- Chatbox (Response Area) ---------- */
     #chatbox {
@@ -42,6 +43,9 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
+      width: 100%;
+      border-radius: 10px;
+      box-sizing: border-box;  /* Ensure it doesn't overflow */
     }
     /* ---------- Label Styling ---------- */
     .label {
@@ -49,11 +53,11 @@
       font-weight: bold;
     }
     .user-label {
-      color: #732982;
+      color: #ae6acd;
       text-align: right;
     }
     .bot-label {
-      color: #D1A3FF;
+      color: #8b45b0;
       text-align: left;
     }
     /* ---------- Classic Bubble Styles ---------- */
@@ -80,6 +84,8 @@
       align-items: center;
       background-color: white;
       border-top: 1px solid #D1A3FF;
+      width: 100%;
+      box-sizing: border-box;
     }
     .input-container input {
       flex: 1;
@@ -90,6 +96,8 @@
       font-size: 16px;
       text-align: center;
       margin: 0;
+      max-width: 90%;
+      box-sizing: border-box;
     }
     .input-container input:focus {
       border-color: #D1A3FF;
@@ -99,10 +107,11 @@
       background-color: #732982;
       color: white;
       border: none;
-      border-radius: 20px;
+      border-radius: 25px;
       cursor: pointer;
       font-size: 16px;
       margin-left: 10px;
+      flex-shrink: 0;
     }
     .input-container button:hover {
       background-color: #D1A3FF;
@@ -126,6 +135,44 @@
       50% { transform: scale(1.5); }
       100% { transform: scale(1); }
     }
+    /* ---------- Modal (Pop-Up) Styles ---------- */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7); /* Transparent background */
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      width: 300px;
+      text-align: center;
+    }
+    .modal-content input {
+      width: 90%;  /* Adjusted width to better align input box */
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      border: 2px solid #732982;
+      text-align: center;
+    }
+    .modal-content button {
+      padding: 10px 20px;
+      background-color: #732982;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .modal-content button:hover {
+      background-color: #D1A3FF;
+    }
     /* ---------- Custom Scrollbar ---------- */
     #chatbox::-webkit-scrollbar {
       width: 8px;
@@ -143,6 +190,16 @@
 <body>
 
   <h2>Crush it with Pip!</h2>
+  
+  <!-- Modal for Username Prompt -->
+  <div class="modal" id="usernameModal">
+    <div class="modal-content">
+      <h3>Hey! How do you want Pip to call you?</h3>
+      <input type="text" id="usernameInput" placeholder="Enter your name" autocomplete="off" />
+      <button onclick="setUsername()">Set Username</button>
+    </div>
+  </div>
+
   <div class="chat-container">
     <!-- Chat Response Area -->
     <div id="chatbox"></div>
@@ -154,6 +211,41 @@
   </div>
 
   <script>
+    // Check if username is already stored in sessionStorage
+    const username = sessionStorage.getItem('username');
+
+    if (username) {
+      // If username exists, hide the modal and start the chat
+      document.getElementById('usernameModal').style.display = 'none';
+      welcomeUser(username);
+    } else {
+      // Otherwise, show the username modal
+      document.getElementById('usernameModal').style.display = 'flex';
+    }
+
+    // Set username in sessionStorage and start chat
+    function setUsername() {
+      const inputField = document.getElementById('usernameInput');
+      const username = inputField.value.trim();
+      if (username) {
+        sessionStorage.setItem('username', username);
+        document.getElementById('usernameModal').style.display = 'none';
+        welcomeUser(username);
+      }
+    }
+
+    // Welcome the user with their name
+    function welcomeUser(username) {
+      const chatbox = document.getElementById('chatbox');
+      chatbox.innerHTML += `
+        <p class="label bot-label">Pip:</p>
+        <div class="bubble bubble-bot">
+          Hello, ${username}! Ready to crush it with Pip?
+        </div>`;
+      chatbox.scrollTop = chatbox.scrollHeight;
+    }
+
+    // Send the user's message and get the bot's response
     async function sendMessage() {
       const inputField = document.getElementById('userInput');
       const message = inputField.value.trim();
