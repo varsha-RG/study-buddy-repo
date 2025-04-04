@@ -1,0 +1,49 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PDF Viewer & Read Aloud</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>PDF Viewer & Read Aloud</h1>
+
+    <!-- File Upload -->
+    <div class="upload-section">
+      <input type="file" id="pdfInput" accept="application/pdf" name="pdf">
+    </div>
+
+    <!-- PDF Viewer -->
+    <div id="pdfViewer">
+      <canvas id="pdfCanvas"></canvas>
+      <div id="pageNumContainer">
+        <button id="prevPage">Previous</button>
+        <span id="pageNum">0</span> / <span id="pageCount">0</span>
+        <button id="nextPage">Next</button>
+      </div>
+    </div>
+
+    <!-- TTS Controls -->
+    <div class="controls">
+      <button id="readAloud">Read Aloud</button>
+      <button id="stopSpeech" class="stop-button">⏹</button>
+    </div>
+
+    <!-- Speed Control Slider -->
+    <div class="speed-control">
+      <label for="speedRange">Speed:</label>
+      <input type="range" id="speedRange" min="0.5" max="2" step="0.1" value="1">
+      <span id="speedValue">1.0x</span>
+    </div>
+    <div class="voice-control">
+      <label for="voiceSelect">Voice:</label>
+      <select id="voiceSelect"></select>
+    </div>
+    
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

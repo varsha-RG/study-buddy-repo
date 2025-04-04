@@ -1,0 +1,171 @@
+/* public/style.css */
+
+body {
+    font-family: "Times New Roman", serif;
+    background-color: #732982; /* Primary violet */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+    text-align: center;
+  }
+  
+  /* File input styling */
+  .upload-section input[type="file"] {
+    padding: 10px;
+    border: 2px solid #732982;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: "Times New Roman", serif;
+  }
+  
+  /* PDF viewer styling */
+  #pdfViewer {
+    margin: 20px 0;
+  }
+  
+  #pdfCanvas {
+    border: 2px solid #732982;
+    border-radius: 20px;
+    max-width: 100%;
+  }
+  
+  /* Navigation buttons */
+  #pageNumContainer {
+    margin-top: 10px;
+  }
+  
+  #pageNumContainer button {
+    background-color: #732982;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    margin: 0 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: "Times New Roman", serif;
+  }
+  
+  #pageNumContainer button:hover {
+    background-color: #5F2375; /* Darker hover variant */
+  }
+  
+  /* TTS control buttons */
+  .controls button {
+    background-color: #732982;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: "Times New Roman", serif;
+  }
+  
+  .controls button:hover {
+    background-color: #5F2375;
+  }
+  
+  /* Stop button: red symbol on transparent background */
+  .controls .stop-button {
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    color: #e74c3c !important; /* Red for stop symbol */
+    font-size: 20px;
+    padding: 0;
+    margin: 10px;
+    cursor: pointer;
+    outline: none;
+    font-family: "Times New Roman", serif;
+  }
+  
+  .controls .stop-button:hover {
+    color: #c0392b !important;
+  }
+  /* Speed Control Slider */
+/* Speed Control Slider */
+/* Speed Control Slider */
+.speed-control {
+  margin-top: 15px;
+  text-align: center;
+  font-family: "Times New Roman", serif;
+  color: #fff;
+}
+
+.speed-control label {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Slider Track (Pale Purple) */
+#speedRange {
+  appearance: none; /* Standard */
+  -webkit-appearance: none; /* Chrome, Safari */
+  -moz-appearance: none; /* Firefox */
+  width: 200px;
+  height: 6px;
+  background: #D1A3FF; /* Pale Purple */
+  border-radius: 5px;
+  outline: none;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+/* Slider Thumb (Dark Purple) */
+#speedRange::-webkit-slider-thumb {
+  appearance: none; /* Standard */
+  -webkit-appearance: none; /* Chrome, Safari */
+  -moz-appearance: none; /* Firefox */
+  width: 18px;
+  height: 18px;
+  background: #732982; /* Dark Purple */
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#speedRange::-moz-range-thumb {
+  appearance: none; /* Standard */
+  -webkit-appearance: none; /* Chrome, Safari */
+  -moz-appearance: none; /* Firefox */
+  width: 18px;
+  height: 18px;
+  background: #732982; /* Dark Purple */
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Speed Value Display */
+#speedValue {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+  .voice-control {
+    margin-top: 15px;
+    text-align: center;
+    font-family: "Times New Roman", serif;
+    color: #fff;
+  }
+  
+  .voice-control label {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  #voiceSelect {
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+  
