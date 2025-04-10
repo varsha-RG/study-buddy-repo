@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crush It with Pip!</title>
+  <title>Crush It with Stud!</title>
   <style>
     /* ---------- Global Styles ---------- */
     body {
@@ -189,12 +189,12 @@
 </head>
 <body>
 
-  <h2>Crush it with Pip!</h2>
+  <h2>Crush it with Stud!</h2>
   
   <!-- Modal for Username Prompt -->
   <div class="modal" id="usernameModal">
     <div class="modal-content">
-      <h3>Hey! How do you want Pip to call you?</h3>
+      <h3>Hey! How do you want Stud to call you?</h3>
       <input type="text" id="usernameInput" placeholder="Enter your name" autocomplete="off" />
       <button onclick="setUsername()">Set Username</button>
     </div>
@@ -238,9 +238,9 @@
     function welcomeUser(username) {
       const chatbox = document.getElementById('chatbox');
       chatbox.innerHTML += `
-        <p class="label bot-label">Pip:</p>
+        <p class="label bot-label">Stud:</p>
         <div class="bubble bubble-bot">
-          Hello, ${username}! My name is Pip, your study buddy! Are you ready to start learning?
+          Hello, ${username}! My name is Stud, your study buddy! Are you ready to start learning?
         </div>`;
       chatbox.scrollTop = chatbox.scrollHeight;
     }
@@ -271,7 +271,7 @@
       chatbox.scrollTop = chatbox.scrollHeight;
 
       try {
-        const response = await fetch('http://localhost:3000/chat', {
+        const response = await fetch('http://localhost:3001/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ message })
@@ -285,7 +285,7 @@
         
         // Append Pip label and classic bubble with response
         chatbox.innerHTML += `
-          <p class="label bot-label">Pip:</p>
+          <p class="label bot-label">Stud:</p>
           <div class="bubble bubble-bot">
             ${botMessage}
           </div>`;
